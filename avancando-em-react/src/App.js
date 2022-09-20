@@ -9,10 +9,12 @@ import Container from "./components/Container.js"
 import ExecuteFunction from "./components/ExecuteFunction.js"
 import Message from "./components/Message.js"
 import ChangeMessageState from "./components/ChangeMessageState.js"
+import UserDetails from "./components/UserDetails.js"
 import { useState } from "react"
 
 //styles
 import './App.css';
+
 
 
 
@@ -34,6 +36,12 @@ function App() {
 		setMessage(msg)
 	}
 	
+	const pessoas = [
+		{id: 1, name: "marcelo", age: 20, job: "software developer"},
+		{id: 2, name: "caio", age: 16, job: "student"},
+		{id: 3, name: "werr", age: 52, job: "teacher"}
+	]
+
 	return (
 		<div className="App">
 			<h1>Avançando em ReactJS</h1>
@@ -78,6 +86,18 @@ function App() {
 			{/* state lift */}
 			<Message msg={message}></Message>
 			<ChangeMessageState handleMessage={handleMessage}></ChangeMessageState>
+
+			<hr />
+
+			{/* desafio */}
+			{pessoas.map((pessoa)=> (
+				<UserDetails
+					key={pessoa.id}
+					name={pessoa.name} 
+					age={pessoa.age} 
+					job={pessoa.job}>
+				</UserDetails>
+			))}	
 		</div>
 	);
 }
